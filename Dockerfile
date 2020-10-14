@@ -2,4 +2,4 @@
 FROM alpine
 RUN	apk add --no-cache bash curl jq
 COPY comment.sh /comment.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/comment.sh"]
