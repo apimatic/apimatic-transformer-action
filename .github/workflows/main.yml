@@ -11,3 +11,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
+        id: Auth
+        with:
+         auth_id: ${{ secrets.AUTH }}
