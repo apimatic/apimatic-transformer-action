@@ -5,4 +5,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 args:
-    - ${{ secrets.AUTH }}
+    - AUTH_ID : ${{ secrets.AUTH }}
