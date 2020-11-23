@@ -13,4 +13,4 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: Auth
         with:
-         auth_id: ${{ secrets.AUTH }}
+         auth: ${{ secrets.AUTH }}
