@@ -18,10 +18,6 @@ curl --location --header $AUTH_ID --remote-header-name -o $name1 $download_path1
 
 
 
-#curl -X GET \
-#--url "https://www.apimatic.io/api/transformations/${somevar1}" \
- #-H 'Authorization: Basic ZGV2ZWxvcGVyQGFwaW1hdGljLmlvOndsY3VtTnU4' \
-#-H 'Accept: application/json'
 
 
 
