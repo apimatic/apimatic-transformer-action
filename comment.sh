@@ -1,11 +1,13 @@
 #cd Transformations
 uname=$(date +'%m-%d-%Y'+"%H:%M")
 
+echo $INPUT_AUTH_ID
+echo ${INPUT_AUTH_ID}
 
 
 somevar1=$(curl -X POST \
   --url 'https://staging.apimatic.io/api/transformations' \
-  -H $INPUT_AUTH_ID \
+  --header "$INPUT_AUTH_ID" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data @transform.json | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
