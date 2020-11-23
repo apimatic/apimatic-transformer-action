@@ -6,6 +6,9 @@ inputs:
     description: 'AUTH ID of user'
     required: true
     default: 1
+outputs:
+  specurl:
+    description: 'Name des Pokemons'
 runs:
   using: 'docker'
   image: 'Dockerfile'
