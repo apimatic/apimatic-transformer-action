@@ -1,8 +1,13 @@
 # action.yml
 name: 'Hello World'
 description: 'Greet someone and record the time'
+inputs:
+  auth_id:
+    description: 'AUTH ID of user'
+    required: true
+    default: 1
 runs:
   using: 'docker'
   image: 'Dockerfile'
 args:
-    - AUTH_ID : ${{ secrets.AUTH }}
+    - ${{ inputs.auth_id }}
