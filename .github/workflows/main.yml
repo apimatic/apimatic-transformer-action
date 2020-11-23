@@ -14,3 +14,6 @@ jobs:
         id: Auth
         with:
          auth: ${{ secrets.AUTH }}
+     # Use the pokemon_name output from our action (id:pokemon)
+      - name: Get the pokemon
+        run: echo "${{ steps.Auth.outputs.specurl }}
