@@ -2,10 +2,12 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  auth_id:
+  auth:
     description: 'AUTH ID of user'
     required: true
     default: 1
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.auth }}
