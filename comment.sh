@@ -5,7 +5,7 @@ uname=$(date +'%m-%d-%Y'+"%H:%M")
 
 somevar1=$(curl -X POST \
   --url 'https://staging.apimatic.io/api/transformations' \
-  --header ${INPUT_AUTH_ID} \
+  -H $INPUT_AUTH_ID \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data @transform.json | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
