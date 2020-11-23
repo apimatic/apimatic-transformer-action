@@ -1,4 +1,32 @@
-# comment - a Bash script to make a single API call
+cd Transformations
+uname=$(date +'%m-%d-%Y'+"%H:%M")
 
-curl --location --request GET 'https://alpha.apimatic.io/api/api-entities/5f86db7ead307052dc559670/on-prem-portal' \
---header 'Accept: application/zip' \
+
+
+somevar1=$(curl -X POST \
+  --url 'https://staging.apimatic.io/api/transformations' \
+  --header $AUTH_ID \
+  -H 'Accept: application/json'\
+  -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
+  --data @transform.json | jshon -e generatedFile | sed -e 's/^"//' -e 's/"$//')
+
+echo $somevar1
+download_path1="https://staging.apimatic.io/${somevar1}"
+echo $download_path1
+name1=petapi_$uname.json
+curl --location --header $AUTH_ID --remote-header-name -o $name1 $download_path1
+
+
+
+#curl -X GET \
+#--url "https://www.apimatic.io/api/transformations/${somevar1}" \
+ #-H 'Authorization: Basic ZGV2ZWxvcGVyQGFwaW1hdGljLmlvOndsY3VtTnU4' \
+#-H 'Accept: application/json'
+
+
+
+git config user.name "mujjazi"
+git config user.email "13besemmehdi@seecs.edu.pk"
+git add .
+git commit -m 'Downloaded Transformation'
+git push
