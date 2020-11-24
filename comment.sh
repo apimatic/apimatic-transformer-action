@@ -2,6 +2,8 @@
 uname=$(date +'%m-%d-%Y'+"%H:%M")
 
 user_auth=$1
+input=$2
+export=$3
 file=0
 
 FILE=transform.json
@@ -29,8 +31,8 @@ else
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   -d '{
-  "fileUrl": "https://petstore.swagger.io/v2/swagger.json",
-  "exportFormat": "raml",
+  "fileUrl": "$input",
+  "exportFormat": "$export",
   "codeGenVersion": 1
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
