@@ -6,11 +6,11 @@ inputs:
     description: 'Basic Authorization of user'
     required: true
     default: 1
-    inputURL:
+  inputURL:
     description: 'Input API Specification URL'
     required: true
     default: 1
-    exportFormat:
+  exportFormat:
     description: 'Required Format of API Specification'
     required: true
     default: 1
