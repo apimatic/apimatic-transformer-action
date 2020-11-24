@@ -1,5 +1,5 @@
 {
   "fileUrl": "https://petstore.swagger.io/v2/swagger.json",
-  "exportFormat": "Swagger20",
+  "exportFormat": "wsdl",
   "codeGenVersion": 1
 }
