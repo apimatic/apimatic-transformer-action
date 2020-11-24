@@ -36,8 +36,8 @@ else
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data '{
-  "fileUrl": $input,
-  "exportFormat": $export,
+  "fileUrl": "'"${input}"'",
+  "exportFormat": "'"${export}"'",
   "codeGenVersion": 1
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
