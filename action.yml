@@ -1,14 +1,14 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'APIMATIC Transformer'
+description: 'Convert API Specifications to different formats'
 inputs:
   auth:
-    description: 'AUTH ID of user'
+    description: 'Basic Authorization of user'
     required: true
     default: 1
 outputs:
   specurl:
-    description: 'Name des Pokemons'
+    description: 'Download URL for converted API Specification in the required format'
 runs:
   using: 'docker'
   image: 'Dockerfile'
