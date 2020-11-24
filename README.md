@@ -68,7 +68,7 @@ jobs:
 
 ```
 
-It is recommended to create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) for the APITree API token (`apitree_token`).
+It is recommended to create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) for the APIMatic API token (`auth`).
 
 ## Inputs
 
