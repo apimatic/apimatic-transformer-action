@@ -21,6 +21,7 @@ fi
 
 if [[ $file -gt 0 ]]
 then
+  echo "inside transform.json if"
   transformedfile=$(curl -X POST \
   --url 'https://staging.apimatic.io/api/transformations' \
   -H "$user_auth" \
@@ -28,12 +29,13 @@ then
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data @transform.json | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 else
+  echo "inside else"
   transformedfile=$(curl -X POST \
   --url 'https://staging.apimatic.io/api/transformations' \
   -H "$user_auth" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
-  -d '{
+  --data '{
   "fileUrl": $input,
   "exportFormat": $export,
   "codeGenVersion": 1
