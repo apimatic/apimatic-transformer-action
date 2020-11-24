@@ -32,9 +32,7 @@ else
   "fileUrl": "https://petstore.swagger.io/v2/swagger.json",
   "exportFormat": "raml",
   "codeGenVersion": 1
-  }' 
-  | jq '.generatedFile' | 
-  sed -e 's/^"//' -e 's/"$//')
+  }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
 
 echo $transformedfile
