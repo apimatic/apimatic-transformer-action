@@ -1,11 +1,11 @@
 # APIMATIC Transformer Action
 
-This [Github Action](https://github.com/actions) uploads and converts any API Specification into an of the supported formats listed [here](https://www.apimatic.io/transformer/#supported-formats).
+This [Github Action](https://github.com/actions) uploads and converts any API Specification into one of the supported formats listed [here](https://www.apimatic.io/transformer/#supported-formats).
 
 ## API Description Format
 ### A format is a unique identifier for transformation. E.g. swagger, raml, wadl, postman
 
-### Formats Supported
+### Formats Supported:
 
 |Name |Description|
 |---	|---	|
@@ -72,24 +72,24 @@ It is recommended to create an [encrypted secret](https://help.github.com/en/act
 
 ## Inputs
 
-### The input parameter that is passed in the workflow is the Basic Authorization token, It is highly recommended to store the AUTH token in GitHub Secrets.
-### You can create your Basic Authorization token from this [website](https://www.blitter.se/utils/basic-authentication-header-generator/)
-### It will generate a string like this for you: Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20=
-### Make sure to add the complete string Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20= in your secret.
+###### The input parameter that is passed in the workflow is the Basic Authorization token, It is highly recommended to store the AUTH token in GitHub Secrets.
+###### You can create your Basic Authorization token from this [website](https://www.blitter.se/utils/basic-authentication-header-generator/)
+###### It will generate a string like this for you: Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20=
+###### Make sure to add the complete string Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20= in your secret.
 
 * `auth`: (**Required**) The API Token which is needed for authorization. Register an [APIMatic](https://www.apimatic.io/account/register) account and purchase a subscription to be authorized with you email and password.
 
-### There are three other inputs that are passed to this action:
+###### There are three other inputs that are passed to this action:
 * fileUrl
 * exportFormat
 * codeGenVersion
 
-### You need to create a json file named transform.json with API Specification URL specified against fileUrl, Required Format against exportFormat and codeGenVersion as 1.
+###### You need to create a json file named transform.json with API Specification URL specified against fileUrl, Required Format against exportFormat and codeGenVersion as 1.
 [Example File](https://github.com/mujjazi/apimatic-transformer-action/blob/master/transform.json)
 
 ## Outputs
 
-### API Specification URL is generated which can be used to download the transformed API specification in the required format but this URL only works with authorization therefore user need to login to APIMATIC and then launch this URL
+###### API Specification URL is generated which can be used to download the transformed API specification in the required format but this URL only works with authorization therefore user need to login to APIMATIC and then launch this URL
 
 ## Feature requests and bug reports
 
