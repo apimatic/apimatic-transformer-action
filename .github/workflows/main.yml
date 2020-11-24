@@ -1,19 +1,19 @@
+name: APITransformer
 on: [push]
 
 jobs:
-  hello_world_job:
+  Test_Transformer:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Testing API Transformer Action
     steps:
-      # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Transform API Spec
         uses: ./ # Uses an action in the root directory
-        id: Auth
+        id: transform
         with:
          auth: ${{ secrets.AUTH }}
-     # Use the pokemon_name output from our action (id:pokemon)
+     # Use the Transformed API Spec as output from our action (id:transform)
       - name: Get the API Spec UR
-        run: echo "${{ steps.Auth.outputs.specurl }}"
+        run: echo "${{ steps.transform.outputs.specurl }}"
