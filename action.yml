@@ -6,6 +6,14 @@ inputs:
     description: 'Basic Authorization of user'
     required: true
     default: 1
+    inputURL:
+    description: 'Input API Specification URL'
+    required: true
+    default: 1
+    exportFormat:
+    description: 'Required Format of API Specification'
+    required: true
+    default: 1
 outputs:
   specurl:
     description: 'Download URL for converted API Specification in the required format'
@@ -14,3 +22,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.auth }}
+    - ${{ inputs.inputURL }}
+    - ${{ inputs.exportFormat }}
