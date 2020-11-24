@@ -36,6 +36,8 @@ Basic usage:
         id: transform
         with:
          auth: ${{ secrets.AUTH }}
+         inputURL: 'https://petstore.swagger.io/v2/swagger.json'
+         exportFormat: 'raml'
      # Use the Transformed API Spec as output from our action (id:transform)
       - name: Get the API Spec UR
         run: echo "${{ steps.transform.outputs.specurl }}"
@@ -62,6 +64,8 @@ jobs:
         id: transform
         with:
          auth: ${{ secrets.AUTH }}
+         inputURL: 'https://petstore.swagger.io/v2/swagger.json'
+         exportFormat: 'raml'
      # Use the Transformed API Spec as output from our action (id:transform)
       - name: Get the API Spec UR
         run: echo "${{ steps.transform.outputs.specurl }}"
@@ -78,6 +82,10 @@ It is recommended to create an [encrypted secret](https://help.github.com/en/act
 ###### Make sure to add the complete string Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20= in your secret.
 
 * `auth`: (**Required**) The API Token which is needed for authorization. Register an [APIMatic](https://www.apimatic.io/account/register) account and purchase a subscription to be authorized with you email and password.
+* `inputURL`: (**Required**) API Specification URL where the specification that needs to be transformed is located
+* `exportFormat`: (**Required**) Required API Specification format for the list of supported formats mentioned above
+
+###### You can either pass the inputURL and exportFormat as arguments to the action as shown in the workflow or you can just create transform.json file as mentioned below.
 
 ###### There are three other inputs that are passed to this action:
 * fileUrl
