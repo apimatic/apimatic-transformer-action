@@ -39,7 +39,7 @@ Basic usage:
          inputURL: 'https://petstore.swagger.io/v2/swagger.json'
          exportFormat: 'raml'
      # Use the Transformed API Spec as output from our action (id:transform)
-      - name: Get the API Spec UR
+      - name: Get the API Spec URL
         run: echo "${{ steps.transform.outputs.specurl }}"
 ```
 
@@ -67,7 +67,7 @@ jobs:
          inputURL: 'https://petstore.swagger.io/v2/swagger.json'
          exportFormat: 'raml'
      # Use the Transformed API Spec as output from our action (id:transform)
-      - name: Get the API Spec UR
+      - name: Get the API Spec URL
         run: echo "${{ steps.transform.outputs.specurl }}"
 
 ```
