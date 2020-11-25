@@ -15,7 +15,7 @@ jobs:
         with:
          auth: ${{ secrets.AUTH }}
          inputURL: 'https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json'
-         exportFormat: 'raml'
+         exportFormat: 'apimatic'
      # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
         run: echo "${{ steps.raml.outputs.specurl }}"
