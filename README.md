@@ -59,16 +59,28 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Transform API Spec
+        
+      - name: Transform API Spec to raml
         uses: ./ # Uses an action in the root directory
-        id: transform
+        id: raml
         with:
          auth: ${{ secrets.AUTH }}
-         inputURL: 'https://petstore.swagger.io/v2/swagger.json'
-         exportFormat: 'raml'
-     # Use the Transformed API Spec as output from our action (id:transform)
+         inputURL: 'https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json'
+         exportFormat: 'apimatic'
+     # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
-        run: echo "${{ steps.transform.outputs.specurl }}"
+        run: echo "${{ steps.raml.outputs.specurl }}"
+        
+      - name: Transform API Spec to wsdl
+        uses: ./ # Uses an action in the root directory
+        id: wsdl
+        with:
+         auth: ${{ secrets.AUTH }}
+         inputURL: 'https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json'
+         exportFormat: 'wsdl'
+     # Use the Transformed API Spec as output from our action (id:raml)
+      - name: Get the API Spec URL
+        run: echo "${{ steps.wsdl.outputs.specurl }}"
 
 ```
 
