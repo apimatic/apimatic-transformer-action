@@ -1,0 +1,3308 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "REST API",
+    "version" : "1",
+    "title" : "SKYMINDER REST API"
+  },
+  "tags" : [ {
+    "name" : "companies"
+  }, {
+    "name" : "monitoring"
+  }, {
+    "name" : "persons"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/companies" : {
+      "get" : {
+        "tags" : [ "companies" ],
+        "summary" : "Search companies by prams",
+        "description" : "",
+        "operationId" : "searchCompaniesByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.countryCode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "address.regionCode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.subRegionCode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.city",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.zipCode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.address",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.street",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.houseNumber",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.locationType",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "contact.phone",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "identifier.supplierId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "identifier.taxId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "identifier.vatNumber",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "identifier.registrationNumber",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CompanySearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/companies/orders" : {
+      "get" : {
+        "tags" : [ "companies" ],
+        "summary" : "Search company orders by params",
+        "description" : "",
+        "operationId" : "searchCompanyOrdersByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "read",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "userName",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "officeName",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orderedFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orderedTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "deliveredFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "deliveredTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "expiredFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "expiredTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.address.countryCode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.provider.code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "product.name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "product.type",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "product.delivery.option",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orderInformation.userReference",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyOrderSearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "companies" ],
+        "summary" : "Create company order",
+        "description" : "",
+        "operationId" : "createCompanyOrder",
+        "consumes" : [ "application/vnd.skyminder.api.v1+json" ],
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Company order that will be created",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CompanyOrder"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyOrder"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/companies/orders/{skycode}" : {
+      "get" : {
+        "tags" : [ "companies" ],
+        "summary" : "Get company order by skycode",
+        "description" : "",
+        "operationId" : "getCompanyOrderBySkycode",
+        "produces" : [ "application/vnd.skyminder.api.v1+json", "application/vnd.skyminder.api.v1+xml" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "path",
+          "description" : "Skycode of company order",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyOrder"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/companies/products" : {
+      "get" : {
+        "tags" : [ "companies" ],
+        "summary" : "Search products by prams",
+        "description" : "",
+        "operationId" : "searchCompanyProductsByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "countryCode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "delivery.option",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "provider.code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.supplierId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.taxId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.vatNumber",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.registrationNumber",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyProductSearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/companies/reports/{skycode}" : {
+      "get" : {
+        "tags" : [ "companies" ],
+        "summary" : "Get company report by skycode",
+        "description" : "",
+        "operationId" : "getCompanyReportBySkycode",
+        "produces" : [ "application/vnd.skyminder.api.v1+json", "application/vnd.skyminder.api.v1+xml" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "path",
+          "description" : "Skycode of company report",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyReport"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/files" : {
+      "post" : {
+        "tags" : [ "companies" ],
+        "summary" : "Create company report file",
+        "description" : "",
+        "operationId" : "orderFileReport",
+        "consumes" : [ "application/vnd.skyminder.api.v1+json" ],
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Company report file that will be created",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CompanyFile"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyFile"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/files/{skycode}" : {
+      "get" : {
+        "tags" : [ "companies" ],
+        "summary" : "Get company report file by skycode",
+        "description" : "",
+        "operationId" : "getFileReport",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "path",
+          "description" : "Skycode of company report file",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CompanyFile"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/monitoring/items" : {
+      "get" : {
+        "tags" : [ "monitoring" ],
+        "summary" : "Search monitoring items by params",
+        "description" : "",
+        "operationId" : "searchMonitoringItemsByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "provider.code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "address.countryCode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "registeredFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "registeredTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "updatedFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "updatedTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "renewedFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "renewedTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "changeReadStatus",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MonitoringItemSearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "monitoring" ],
+        "summary" : "Enable monitoring",
+        "description" : "",
+        "operationId" : "enableMonitoring",
+        "consumes" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Monitoring item that will be enabled",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MonitoringItem"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/MonitoringItem"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "monitoring" ],
+        "summary" : "Disable monitoring",
+        "description" : "",
+        "operationId" : "disableMonitoring",
+        "consumes" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Monitoring item that will be disabled",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MonitoringItem"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MonitoringItem"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/monitoring/items/{monitoringId}" : {
+      "get" : {
+        "tags" : [ "monitoring" ],
+        "summary" : "Get monitoring item by monitoring Id",
+        "description" : "",
+        "operationId" : "getByMonitoringId",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "monitoringId",
+          "in" : "path",
+          "description" : "Id of monitoring item",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MonitoringItem"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/monitoring/items/{monitoringId}/changes" : {
+      "get" : {
+        "tags" : [ "monitoring" ],
+        "summary" : "Search monitoring changes by params",
+        "description" : "",
+        "operationId" : "searchChangesByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "monitoringId",
+          "in" : "path",
+          "description" : "Id of monitoring item",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "from",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "to",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MonitoringItemChangesResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/monitoring/products" : {
+      "get" : {
+        "tags" : [ "monitoring" ],
+        "summary" : "Search monitoring products by params",
+        "description" : "",
+        "operationId" : "searchMonitoringProductsByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MonitoringProductsSearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/persons/orders" : {
+      "get" : {
+        "tags" : [ "persons" ],
+        "summary" : "Search person orders by params",
+        "description" : "",
+        "operationId" : "searchPersonOrdersByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "status",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "read",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "userName",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "officeName",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orderedFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orderedTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "deliveredFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "deliveredTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "expiredFrom",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "expiredTo",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.address.countryCode",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "company.provider.code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "product.name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "product.type",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "product.delivery.option",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orderInformation.userReference",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PersonOrderSearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "persons" ],
+        "summary" : "Create person order",
+        "description" : "",
+        "operationId" : "createPersonOrder",
+        "consumes" : [ "application/vnd.skyminder.api.v1+json" ],
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Person order that will be created",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/PersonOrder"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "$ref" : "#/definitions/PersonOrder"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/persons/orders/{skycode}" : {
+      "get" : {
+        "tags" : [ "persons" ],
+        "summary" : "Get person order by skycode",
+        "description" : "",
+        "operationId" : "getPersonOrderBySkycode",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "path",
+          "description" : "Skycode of person order",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PersonOrder"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/persons/products" : {
+      "get" : {
+        "tags" : [ "persons" ],
+        "summary" : "Search person products by prams",
+        "description" : "",
+        "operationId" : "searchPersonProductsByParams",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "countryCode",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "delivery.option",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "provider.code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PersonProductSearchResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/persons/reports/{skycode}" : {
+      "get" : {
+        "tags" : [ "persons" ],
+        "summary" : "Get person report by skycode",
+        "description" : "",
+        "operationId" : "getPersonReportBySkycode",
+        "produces" : [ "application/vnd.skyminder.api.v1+json" ],
+        "parameters" : [ {
+          "name" : "skycode",
+          "in" : "path",
+          "description" : "Skycode of person report",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PersonReport"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "403" : {
+            "description" : "Access forbidden"
+          },
+          "404" : {
+            "description" : "Resource not found"
+          },
+          "406" : {
+            "description" : "Unsupported Media Type, missing version in HTTP header (Content-type)"
+          },
+          "422" : {
+            "description" : "One of parameters have invalid value or given parameters combination is forbidden"
+          },
+          "500" : {
+            "description" : "Internal service error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "Address" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "typeDescription" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "regionCode" : {
+          "type" : "string"
+        },
+        "subRegionCode" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "zipCode" : {
+          "type" : "string"
+        },
+        "street" : {
+          "type" : "string"
+        },
+        "houseNumber" : {
+          "type" : "string"
+        },
+        "houseNumberAdd" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Asset" : {
+      "type" : "object",
+      "properties" : {
+        "town" : {
+          "type" : "string"
+        },
+        "province" : {
+          "type" : "string"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BusinessHighlights" : {
+      "type" : "object",
+      "properties" : {
+        "industryData" : {
+          "$ref" : "#/definitions/IndustryData"
+        },
+        "riskData" : {
+          "$ref" : "#/definitions/RiskData"
+        },
+        "paymentData" : {
+          "$ref" : "#/definitions/PaymentData"
+        },
+        "financialData" : {
+          "$ref" : "#/definitions/FinancialData"
+        },
+        "linkagesData" : {
+          "$ref" : "#/definitions/LinkagesData"
+        },
+        "otherData" : {
+          "$ref" : "#/definitions/OtherData"
+        }
+      }
+    },
+    "BusinessManagement" : {
+      "type" : "object",
+      "properties" : {
+        "managers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Manager"
+          }
+        }
+      }
+    },
+    "BusinessRelationships" : {
+      "type" : "object",
+      "properties" : {
+        "entitiesInvolved" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/EntityInvolved"
+          }
+        },
+        "shareholders" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Ownership"
+          }
+        },
+        "participations" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Ownership"
+          }
+        },
+        "beneficialOwners" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/EntityInvolved"
+          }
+        },
+        "domesticParent" : {
+          "$ref" : "#/definitions/Entity"
+        },
+        "ultimateParent" : {
+          "$ref" : "#/definitions/Entity"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "Change" : {
+      "type" : "object",
+      "properties" : {
+        "skychange" : {
+          "type" : "string"
+        },
+        "updatedReportSkycode" : {
+          "type" : "string"
+        },
+        "changedAt" : {
+          "type" : "string"
+        },
+        "relevance" : {
+          "type" : "string"
+        },
+        "macroArea" : {
+          "$ref" : "#/definitions/CodeNameItem"
+        },
+        "area" : {
+          "$ref" : "#/definitions/CodeNameItem"
+        },
+        "change" : {
+          "$ref" : "#/definitions/CodeNameItem"
+        },
+        "oldValue" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        },
+        "newValue" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "READ", "UNREAD" ]
+        }
+      }
+    },
+    "CodeNameItem" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Company" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "localNames" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "tradeNames" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "provider" : {
+          "$ref" : "#/definitions/Provider"
+        },
+        "addresses" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Address"
+          }
+        },
+        "contact" : {
+          "$ref" : "#/definitions/Contact"
+        },
+        "identifiers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Identifier"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        },
+        "registrationData" : {
+          "$ref" : "#/definitions/RegistrationData"
+        }
+      }
+    },
+    "CompanyFile" : {
+      "type" : "object",
+      "properties" : {
+        "skycode" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "PDF", "TXT", "HTML_ZIP", "RAW" ]
+        },
+        "status" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "NOT_ORDERED", "IN_PROGRESS", "DELIVERED", "FAILED" ]
+        },
+        "orderedAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "content" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "type" : "string",
+            "format" : "byte"
+          }
+        }
+      }
+    },
+    "CompanyOrder" : {
+      "type" : "object",
+      "properties" : {
+        "skycode" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "status" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "IN_PROGRESS", "DELIVERED", "CANCELLED" ]
+        },
+        "orderedAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "expiredAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "language" : {
+          "type" : "string"
+        },
+        "readStatus" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "READ", "UNREAD" ]
+        },
+        "orderReportType" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "JSON", "FILE" ]
+        },
+        "company" : {
+          "$ref" : "#/definitions/Company"
+        },
+        "product" : {
+          "$ref" : "#/definitions/Product"
+        },
+        "userName" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "officeName" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "orderInformation" : {
+          "$ref" : "#/definitions/OrderInformation"
+        },
+        "files" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/CompanyFile"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "CompanyOrderSearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "ordersFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "orders" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CompanyOrder"
+          }
+        }
+      }
+    },
+    "CompanyProductSearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "productsFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "products" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Product"
+          }
+        }
+      }
+    },
+    "CompanyReport" : {
+      "type" : "object",
+      "properties" : {
+        "order" : {
+          "$ref" : "#/definitions/CompanyOrder"
+        },
+        "company" : {
+          "$ref" : "#/definitions/Company"
+        },
+        "businessHighlights" : {
+          "$ref" : "#/definitions/BusinessHighlights"
+        },
+        "negativeInformation" : {
+          "$ref" : "#/definitions/NegativeInformation"
+        },
+        "financialInformation" : {
+          "$ref" : "#/definitions/FinancialInformation"
+        },
+        "standardFinancialInformation" : {
+          "$ref" : "#/definitions/StandardFinancialInformation"
+        },
+        "businessManagement" : {
+          "$ref" : "#/definitions/BusinessManagement"
+        },
+        "businessRelationships" : {
+          "$ref" : "#/definitions/BusinessRelationships"
+        },
+        "complianceCheckInformation" : {
+          "$ref" : "#/definitions/ComplianceCheckInformation"
+        }
+      }
+    },
+    "CompanySearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "matchStatus" : {
+          "type" : "string",
+          "enum" : [ "MATCH", "NO_MATCH", "CANDIDATES" ]
+        },
+        "companiesFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "companies" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Company"
+          }
+        }
+      }
+    },
+    "CompanyStatus" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "normalized" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ComplianceCheckInformation" : {
+      "type" : "object",
+      "properties" : {
+        "numberOfMatches" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "gradient" : {
+          "$ref" : "#/definitions/KeyValueItem"
+        },
+        "matches" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Match"
+          }
+        }
+      }
+    },
+    "Contact" : {
+      "type" : "object",
+      "properties" : {
+        "phones" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "mobiles" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "faxes" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "emails" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "websites" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "CurrencyConversion" : {
+      "type" : "object",
+      "properties" : {
+        "sourceCurrencyCode" : {
+          "type" : "string"
+        },
+        "targetCurrencyCode" : {
+          "type" : "string"
+        },
+        "rate" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "date" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Delivery" : {
+      "type" : "object",
+      "properties" : {
+        "option" : {
+          "type" : "string",
+          "enum" : [ "NORMAL", "EXPRESS", "SUPERFLASH" ]
+        },
+        "minInDays" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "maxInDays" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "DetailedDate" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Entity" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "enum" : [ "PERSON", "COMPANY", "UNKNOWN" ]
+        },
+        "company" : {
+          "$ref" : "#/definitions/Company"
+        },
+        "person" : {
+          "$ref" : "#/definitions/Person"
+        },
+        "unknown" : {
+          "$ref" : "#/definitions/Unknown"
+        },
+        "complianceCheckInformation" : {
+          "$ref" : "#/definitions/ComplianceCheckInformation"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "EntityInvolved" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "entity" : {
+          "$ref" : "#/definitions/Entity"
+        },
+        "hasDebts" : {
+          "type" : "boolean"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "Enum" : {
+      "type" : "object"
+    },
+    "Event" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        },
+        "registerNumber" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "court" : {
+          "type" : "string"
+        },
+        "dates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DetailedDate"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "path" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "SINGLE", "MULTIPLE", "SELECT" ]
+        },
+        "selected" : {
+          "type" : "boolean"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "values" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "selectedOption" : {
+          "type" : "string"
+        },
+        "options" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Enum"
+          }
+        }
+      }
+    },
+    "FinancialData" : {
+      "type" : "object",
+      "properties" : {
+        "latestAccountDate" : {
+          "type" : "string"
+        },
+        "registeredCapital" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "turnover" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "profitLoss" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "netWorth" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "fixedAssets" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "liquidAssets" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "inventory" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "currentAssets" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "currentLiabilities" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "totalAssets" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        }
+      }
+    },
+    "FinancialDataItem" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "valueText" : {
+          "type" : "string"
+        },
+        "currencyCode" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "currencyDescription" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string"
+        }
+      }
+    },
+    "FinancialDetails" : {
+      "type" : "object",
+      "properties" : {
+        "currency" : {
+          "type" : "string"
+        },
+        "dataFormat" : {
+          "type" : "string"
+        },
+        "dates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DetailedDate"
+          }
+        },
+        "entries" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/FinancialEntry"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "FinancialEntry" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "parentId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "label" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "amount" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "FinancialInformation" : {
+      "type" : "object",
+      "properties" : {
+        "details" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/FinancialDetails"
+          }
+        }
+      }
+    },
+    "Function" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Identifier" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "number" : {
+          "type" : "string"
+        },
+        "issuingAuthority" : {
+          "type" : "string"
+        },
+        "issuingAuthorityCity" : {
+          "type" : "string"
+        },
+        "issuingAt" : {
+          "type" : "string"
+        }
+      }
+    },
+    "IndustryActivities" : {
+      "type" : "object",
+      "properties" : {
+        "values" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/IndustryCode"
+          }
+        },
+        "normalized" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/IndustryCode"
+          }
+        }
+      }
+    },
+    "IndustryActivity" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "$ref" : "#/definitions/IndustryCode"
+        },
+        "normalized" : {
+          "$ref" : "#/definitions/IndustryCode"
+        }
+      }
+    },
+    "IndustryCode" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "IndustryData" : {
+      "type" : "object",
+      "properties" : {
+        "primaryBusinessActivity" : {
+          "type" : "string"
+        },
+        "primaryBusinessDescription" : {
+          "type" : "string"
+        },
+        "primaryIndustry" : {
+          "$ref" : "#/definitions/IndustryActivity"
+        },
+        "activities" : {
+          "$ref" : "#/definitions/IndustryActivities"
+        }
+      }
+    },
+    "KeyValueItem" : {
+      "type" : "object",
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "LegalForm" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "normalized" : {
+          "type" : "string",
+          "enum" : [ "PUBLIC_LIMITED_COMPANY", "PRIVATE_LIMITED_COMPANY", "GENERAL_PARTNERSHIP", "LIMITED_PARTNERSHIP", "SOLE_PROPRIETORSHIP", "UNLIMITED_COMPANY", "COOPERATIVE", "OTHER" ]
+        }
+      }
+    },
+    "LinkagesData" : {
+      "type" : "object",
+      "properties" : {
+        "ultimateParent" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "countryDescription" : {
+          "type" : "string"
+        },
+        "domesticParent" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Manager" : {
+      "type" : "object",
+      "properties" : {
+        "entity" : {
+          "$ref" : "#/definitions/Entity"
+        },
+        "positions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Position"
+          }
+        },
+        "positionInOtherCompanies" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PositionInOtherCompany"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "Match" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "reason" : {
+          "type" : "string"
+        },
+        "score" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "summaries" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Summary"
+          }
+        },
+        "details" : {
+          "$ref" : "#/definitions/MatchDetails"
+        }
+      }
+    },
+    "MatchDetails" : {
+      "type" : "object",
+      "properties" : {
+        "date" : {
+          "$ref" : "#/definitions/DetailedDate"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "addresses" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Address"
+          }
+        },
+        "ids" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        },
+        "akas" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "MonitoringItem" : {
+      "type" : "object",
+      "properties" : {
+        "monitoringId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "skycode" : {
+          "type" : "string"
+        },
+        "updatedReportSkycode" : {
+          "type" : "string"
+        },
+        "company" : {
+          "$ref" : "#/definitions/Company"
+        },
+        "product" : {
+          "$ref" : "#/definitions/MonitoringProduct"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "officeName" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "FULL_MONITORING", "ALERT", "PLANNED_REVISION" ]
+        },
+        "frequency" : {
+          "type" : "string",
+          "enum" : [ "FORTNIGHTLY", "MONTHLY", "QUARTERLY", "SEMI_ANNUALLY", "ANNUALLY" ]
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "ACTIVE", "INACTIVE" ]
+        },
+        "registeredAt" : {
+          "type" : "string"
+        },
+        "updatedAt" : {
+          "type" : "string"
+        },
+        "renewedAt" : {
+          "type" : "string"
+        },
+        "deliveredUpdates" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "scheduledUpdates" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "unreadChanges" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "MonitoringItemChangesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "monitoringId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "skycode" : {
+          "type" : "string"
+        },
+        "company" : {
+          "$ref" : "#/definitions/Company"
+        },
+        "changes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Change"
+          }
+        },
+        "changesFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "MonitoringItemSearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "items" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MonitoringItem"
+          }
+        },
+        "itemsFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "MonitoringProduct" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "FULL_MONITORING", "ALERT", "PLANNED_REVISION" ]
+        },
+        "provider" : {
+          "$ref" : "#/definitions/Provider"
+        },
+        "frequencies" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "FORTNIGHTLY", "MONTHLY", "QUARTERLY", "SEMI_ANNUALLY", "ANNUALLY" ]
+          }
+        }
+      }
+    },
+    "MonitoringProductsSearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "products" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MonitoringProduct"
+          }
+        },
+        "productsFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "NegativeInfoItem" : {
+      "type" : "object",
+      "properties" : {
+        "event" : {
+          "$ref" : "#/definitions/Event"
+        },
+        "subject" : {
+          "$ref" : "#/definitions/Subject"
+        },
+        "assets" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Asset"
+          }
+        },
+        "financialInformation" : {
+          "$ref" : "#/definitions/FinancialInformation"
+        },
+        "otherSubjects" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Subject"
+          }
+        },
+        "notary" : {
+          "type" : "string"
+        },
+        "closed" : {
+          "type" : "boolean"
+        },
+        "relevant" : {
+          "type" : "boolean"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "NegativeInformation" : {
+      "type" : "object",
+      "properties" : {
+        "debts" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/NegativeInfoItem"
+          }
+        },
+        "legalProcedures" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/NegativeInfoItem"
+          }
+        },
+        "detrimentalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/NegativeInfoItem"
+          }
+        }
+      }
+    },
+    "OrderInformation" : {
+      "type" : "object",
+      "properties" : {
+        "userReference" : {
+          "type" : "string"
+        },
+        "customerReference" : {
+          "type" : "string"
+        },
+        "additionalNote" : {
+          "type" : "string"
+        },
+        "requestPurpose" : {
+          "type" : "string"
+        },
+        "transactionValue" : {
+          "type" : "string"
+        },
+        "userDeliveryEmail" : {
+          "type" : "string"
+        },
+        "proofOfInterest" : {
+          "type" : "string"
+        },
+        "contactPerson" : {
+          "type" : "string"
+        }
+      }
+    },
+    "OtherData" : {
+      "type" : "object",
+      "properties" : {
+        "employees" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Ownership" : {
+      "type" : "object",
+      "properties" : {
+        "owner" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "owned" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "isMajorityOwner" : {
+          "type" : "boolean"
+        },
+        "position" : {
+          "$ref" : "#/definitions/Position"
+        },
+        "capitalShareNumber" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "capitalSharePercentage" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "capitalShareAmount" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "dates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DetailedDate"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "Page" : {
+      "type" : "object",
+      "properties" : {
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "PaymentBehaviourScore" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "conversion" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PaymentData" : {
+      "type" : "object",
+      "properties" : {
+        "paymentExperience" : {
+          "$ref" : "#/definitions/PaymentExperience"
+        },
+        "paymentBehaviourScore" : {
+          "$ref" : "#/definitions/PaymentBehaviourScore"
+        }
+      }
+    },
+    "PaymentExperience" : {
+      "type" : "object",
+      "properties" : {
+        "presence" : {
+          "type" : "boolean"
+        },
+        "recordsNumber" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "totalAmount" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "averageAmount" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "latestAt" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Person" : {
+      "type" : "object",
+      "properties" : {
+        "firstName" : {
+          "type" : "string"
+        },
+        "middleName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "gender" : {
+          "type" : "string",
+          "enum" : [ "MALE", "FEMALE" ]
+        },
+        "birthDate" : {
+          "type" : "string"
+        },
+        "provider" : {
+          "$ref" : "#/definitions/Provider"
+        },
+        "addresses" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Address"
+          }
+        },
+        "identifiers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Identifier"
+          }
+        },
+        "contact" : {
+          "$ref" : "#/definitions/Contact"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "PersonOrder" : {
+      "type" : "object",
+      "properties" : {
+        "skycode" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "status" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "IN_PROGRESS", "DELIVERED", "CANCELLED" ]
+        },
+        "orderedAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "expiredAt" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "language" : {
+          "type" : "string"
+        },
+        "readStatus" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "READ", "UNREAD" ]
+        },
+        "orderReportType" : {
+          "type" : "string",
+          "readOnly" : true,
+          "enum" : [ "JSON", "FILE" ]
+        },
+        "person" : {
+          "$ref" : "#/definitions/Person"
+        },
+        "product" : {
+          "$ref" : "#/definitions/Product"
+        },
+        "userName" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "officeName" : {
+          "type" : "string",
+          "readOnly" : true
+        },
+        "orderInformation" : {
+          "$ref" : "#/definitions/OrderInformation"
+        },
+        "files" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/CompanyFile"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "PersonOrderSearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "ordersFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "orders" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PersonOrder"
+          }
+        }
+      }
+    },
+    "PersonProductSearchResponse" : {
+      "type" : "object",
+      "properties" : {
+        "filters" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Filter"
+          }
+        },
+        "sort" : {
+          "type" : "array",
+          "readOnly" : true,
+          "items" : {
+            "$ref" : "#/definitions/Sort"
+          }
+        },
+        "page" : {
+          "readOnly" : true,
+          "$ref" : "#/definitions/Page"
+        },
+        "productsFound" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "products" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Product"
+          }
+        }
+      }
+    },
+    "PersonReport" : {
+      "type" : "object",
+      "properties" : {
+        "order" : {
+          "$ref" : "#/definitions/PersonOrder"
+        },
+        "person" : {
+          "$ref" : "#/definitions/Person"
+        },
+        "complianceCheckInformation" : {
+          "$ref" : "#/definitions/ComplianceCheckInformation"
+        }
+      }
+    },
+    "Position" : {
+      "type" : "object",
+      "properties" : {
+        "function" : {
+          "$ref" : "#/definitions/Function"
+        },
+        "period" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DetailedDate"
+          }
+        },
+        "active" : {
+          "type" : "boolean"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "PositionInOtherCompany" : {
+      "type" : "object",
+      "properties" : {
+        "company" : {
+          "$ref" : "#/definitions/Company"
+        },
+        "positions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Position"
+          }
+        }
+      }
+    },
+    "Product" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "enum" : [ "ONLINE", "OFFLINE" ]
+        },
+        "provider" : {
+          "$ref" : "#/definitions/Provider"
+        },
+        "delivery" : {
+          "$ref" : "#/definitions/Delivery"
+        },
+        "languages" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "formats" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "enum" : [ "JSON", "PDF", "HTML", "TXT" ]
+          }
+        }
+      }
+    },
+    "Provider" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "code" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Rating" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "normalized" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RegistrationData" : {
+      "type" : "object",
+      "properties" : {
+        "legalForm" : {
+          "$ref" : "#/definitions/LegalForm"
+        },
+        "registeredAt" : {
+          "type" : "string"
+        },
+        "incorporatedAt" : {
+          "type" : "string"
+        },
+        "dissolvedAt" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RiskData" : {
+      "type" : "object",
+      "properties" : {
+        "rating" : {
+          "$ref" : "#/definitions/Rating"
+        },
+        "semaphore" : {
+          "$ref" : "#/definitions/Semaphore"
+        },
+        "riskIndex" : {
+          "$ref" : "#/definitions/RiskIndex"
+        },
+        "creditLimit" : {
+          "$ref" : "#/definitions/FinancialDataItem"
+        },
+        "companyStatus" : {
+          "$ref" : "#/definitions/CompanyStatus"
+        },
+        "presenceOfAdverseData" : {
+          "type" : "string"
+        },
+        "presenceOfDebts" : {
+          "type" : "string"
+        },
+        "presenceOfLegalProcedures" : {
+          "type" : "string"
+        },
+        "presenceOfDetrimentalInformation" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RiskIndex" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Semaphore" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Sort" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "order" : {
+          "type" : "string",
+          "enum" : [ "ASC", "DESC" ]
+        },
+        "selected" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "StandardFinancialInformation" : {
+      "type" : "object",
+      "properties" : {
+        "dateFormat" : {
+          "type" : "string"
+        },
+        "currency" : {
+          "type" : "string"
+        },
+        "currencyConversion" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CurrencyConversion"
+          }
+        },
+        "details" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/FinancialDetails"
+          }
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    },
+    "Subject" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "identifier" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "bornOn" : {
+          "type" : "string"
+        },
+        "bornAt" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Summary" : {
+      "type" : "object",
+      "properties" : {
+        "type" : {
+          "type" : "string"
+        },
+        "input" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Unknown" : {
+      "type" : "object",
+      "properties" : {
+        "firstName" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "dates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DetailedDate"
+          }
+        },
+        "addresses" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Address"
+          }
+        },
+        "identifiers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Identifier"
+          }
+        },
+        "contact" : {
+          "$ref" : "#/definitions/Contact"
+        },
+        "additionalInformation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/KeyValueItem"
+          }
+        }
+      }
+    }
+  }
+}
