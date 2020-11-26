@@ -35,7 +35,7 @@ else
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
 
-download_path1="staging.apimatic.io/${transformedfile}"
+download_path1="https://staging.apimatic.io${transformedfile}"
 
 echo "::set-output name=specurl::$download_path1"
 
