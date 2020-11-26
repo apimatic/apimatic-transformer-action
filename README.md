@@ -23,7 +23,7 @@ This [Github Action](https://github.com/actions) uploads and converts any API Sp
 |openapi3yaml|The OpenAPI 3.0 Yaml format|
 |wsdl|The WSDL format|
 
-## Usage
+### Usage
 
 Basic usage:
 ```
@@ -45,7 +45,7 @@ Basic usage:
 
 This action requires [actions/checkout@v2](https://github.com/actions/checkout) as a first step.
 
-## Example Workflow
+### Example Workflow
 
 ```
 name: APITransformer
@@ -86,7 +86,7 @@ jobs:
 
 It is recommended to create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) for the APIMatic API token (`auth`).
 
-## Inputs
+### Inputs
 
 ###### The input parameter that is passed in the workflow is the Basic Authorization token, It is highly recommended to store the AUTH token in GitHub Secrets.
 ###### You can create your Basic Authorization token from this [website](https://www.blitter.se/utils/basic-authentication-header-generator/)
@@ -99,22 +99,23 @@ It is recommended to create an [encrypted secret](https://help.github.com/en/act
 
 ###### You can either pass the inputURL and exportFormat as arguments to the action as shown in the workflow or you can just create transform.json file as mentioned below.
 
-###### There are three other inputs that are passed to this action:
-* fileUrl
-* exportFormat
-* codeGenVersion
+###### There are three other inputs that are passed to this action if you create a transform.json file to pass fileUrl, exportFormat and codeGenVersion:
+* `fileUrl`
+* `exportFormat`
+* `codeGenVersion`
 
 ###### You need to create a json file named transform.json with API Specification URL specified against fileUrl, Required Format against exportFormat and codeGenVersion as 1.
-[Example File](https://github.com/mujjazi/apimatic-transformer-action/blob/master/transform.json)
 
-## Outputs
+### Outputs
 
-###### API Specification URL is generated which can be used to download the transformed API specification in the required format but this URL only works with authorization therefore user need to login to APIMATIC and then launch this URL
+* `specurl`: URL of the newly generated API Specification with the required format passed through the arugment exportFormat
 
-## Feature requests and bug reports
+###### Note: The output is the API Specification URL which can be used to download the transformed API specification in the required format but this URL only works with authorization therefore user need to login to APIMATIC and then launch this URL
+
+### Feature requests and bug reports
 
 Please file feature requests and bug reports as [github issues](https://github.com/mujjazi/apimatic-transformer-action/issues).
 
-## License
+### License
 
 See [LICENSE](LICENSE)
