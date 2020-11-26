@@ -1,5 +1,11 @@
 name: 'APIMATIC Transformer'
 description: 'Convert API Specifications to required API Specifcation Format'
+
+author: 'apimatic'
+branding:
+  icon: 'anchor'
+  color: 'blue'
+
 inputs:
   auth:
     description: 'Basic Authorization of user'
@@ -10,9 +16,11 @@ inputs:
   exportFormat:
     description: 'Required Format of API Specification'
     required: true
+
 outputs:
   specurl:
     description: 'Download URL for converted API Specification in the required format'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
