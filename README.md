@@ -31,8 +31,8 @@ Basic usage:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Transform API Spec
-        uses: mujjazi/apimatic-transformer-actions@master
+      - name: APIMATIC Transformer
+        uses: apimatic/apimatic-transformer-action@v0.1
         id: transform
         with:
          auth: ${{ secrets.AUTH }}
@@ -60,8 +60,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Transform API Spec to raml
-        uses: ./ # Uses an action in the root directory
+      - name: APIMATIC Transformer
+        uses: apimatic/apimatic-transformer-action@v0.1
         id: raml
         with:
          auth: ${{ secrets.AUTH }}
@@ -71,8 +71,8 @@ jobs:
       - name: Get the API Spec URL
         run: echo "${{ steps.raml.outputs.specurl }}"
         
-      - name: Transform API Spec to wsdl
-        uses: ./ # Uses an action in the root directory
+      - name: APIMATIC Transformer
+        uses: apimatic/apimatic-transformer-action@v0.1
         id: wsdl
         with:
          auth: ${{ secrets.AUTH }}
@@ -91,7 +91,9 @@ It is recommended to create an [encrypted secret](https://help.github.com/en/act
 ###### The input parameter that is passed in the workflow is the Basic Authorization token, It is highly recommended to store the AUTH token in GitHub Secrets.
 ###### You can create your Basic Authorization token from this [website](https://www.blitter.se/utils/basic-authentication-header-generator/)
 ###### It will generate a string like this for you: Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20=
-###### Make sure to add the complete string Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20= in your secret.
+###### Make sure to add the complete string Authorization: Basic cmFuZG9tQGdtYWlsLmNvbTpyYW5kb20= in your secret as shown in the image below.
+
+![Add Basic Authorization token as a secret](https://cdn-images-1.medium.com/max/800/1*KGipCwDXL7ZHhU3qBvWhaQ.png "Add Basic Authorization token as a secret")
 
 * `auth`: (**Required**) The API Token which is needed for authorization. Register an [APIMatic](https://www.apimatic.io/account/register) account and purchase a subscription to be authorized with you email and password.
 * `inputURL`: (**Required**) API Specification URL where the specification that needs to be transformed is located
