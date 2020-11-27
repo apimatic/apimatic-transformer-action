@@ -65,7 +65,7 @@ jobs:
         id: raml
         with:
          auth: ${{ secrets.AUTH }}
-         inputURL: 'https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json'
+         inputURL: 'https://petstore.swagger.io/v2/swagger.json'
          exportFormat: 'apimatic'
      # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
@@ -76,7 +76,7 @@ jobs:
         id: wsdl
         with:
          auth: ${{ secrets.AUTH }}
-         inputURL: 'https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json'
+         inputURL: 'https://petstore.swagger.io/v2/swagger.json'
          exportFormat: 'wsdl'
      # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
