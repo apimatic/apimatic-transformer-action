@@ -6,10 +6,8 @@ file=0
 FILE=transform.json
 
 if [ -f "$FILE" ]; then
-    echo "$FILE exists."
     file=1
 else 
-    echo "$FILE does not exist."
     file=-1
 fi
 
