@@ -3,16 +3,11 @@ user_auth=$1
 input=$2
 export=$3
 
-echo $input
-echo $export
 
 auth1="$(echo -e "${user_auth}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 input1="$(echo -e "${input}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 export1="$(echo -e "${export}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 
-
-echo $input1
-echo $export1
 
 
 file=0
@@ -46,9 +41,12 @@ else
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
 
-if [[ $transformedfile == *"error"* ]]; 
+download_path2="You have an error in your authorization token or InputURL/Export Format!"
+
+if [[ $transformedfile == *Invalid* ]] 
 then
   echo "You have an error in your authorization token or InputURL/Export Format!"
+  echo "::set-output name=specurl::$download_path1"  
 else
   download_path1="https://www.apimatic.io${transformedfile}"
   echo "::set-output name=specurl::$download_path1"
