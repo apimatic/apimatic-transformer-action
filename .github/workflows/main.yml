@@ -1,0 +1,32 @@
+name: APITransformer
+on: [push]
+jobs:
+  Test_Transformer:
+    runs-on: ubuntu-latest
+    name: Testing API Transformer Action
+    steps:
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: APIMATIC Transformer
+        uses: ./
+        id: raml
+        with:
+         auth: ${{ secrets.Test }}
+         inputURL: ' https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json '
+         exportFormat: ' raml '
+     # Use the Transformed API Spec as output from our action (id:raml)
+      - name: Get the API Spec URL
+        run: echo "${{ steps.raml.outputs.specurl }}"
+        
+      - name: APIMATIC Transformer
+        uses: apimatic/apimatic-transformer-action@v0.1
+        id: wsdl
+        with:
+         auth: ${{ secrets.Test }}
+         inputURL: 'https://github.com/mujjazi/apimatic-transformer-action/blob/master/bookingpal.json'
+         exportFormat: 'wsdl'
+     # Use the Transformed API Spec as output from our action (id:wsdl)
+      - name: Get the API Spec URL
+        run: echo "${{ steps.wsdl.outputs.specurl }}"
