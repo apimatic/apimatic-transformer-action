@@ -21,12 +21,12 @@ jobs:
         run: echo "${{ steps.raml.outputs.specurl }}"
         
       - name: APIMATIC Transformer
-        uses: apimatic/apimatic-transformer-action@v0.1
+        uses: ./
         id: wsdl
         with:
          auth: ${{ secrets.AUTH }}
-         inputURL: 'https://petstore.swagger.io/v2/swagger.json '
-         exportFormat: 'wsdl '
+         inputURL: ' https://petstore.swagger.io/v2/swagger.json '
+         exportFormat: ' wsdl '
      # Use the Transformed API Spec as output from our action (id:wsdl)
       - name: Get the API Spec URL
         run: echo "${{ steps.wsdl.outputs.specurl }}"
