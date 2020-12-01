@@ -13,7 +13,7 @@ jobs:
         uses: ./
         id: raml
         with:
-         auth: ${{ secrets.Test }}
+         auth: ${{ secrets.AUTH }}
          inputURL: ' https://petstore.swagger.io/v2/swagger.json '
          exportFormat: ' raml '
      # Use the Transformed API Spec as output from our action (id:raml)
@@ -24,7 +24,7 @@ jobs:
         uses: apimatic/apimatic-transformer-action@v0.1
         id: wsdl
         with:
-         auth: ${{ secrets.Test }}
+         auth: ${{ secrets.AUTH }}
          inputURL: 'https://petstore.swagger.io/v2/swagger.json '
          exportFormat: 'wsdl '
      # Use the Transformed API Spec as output from our action (id:wsdl)
