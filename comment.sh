@@ -6,11 +6,12 @@ export=$3
 echo $input
 echo $export
 
-sed 's/^[[:space:]]*//' <<< "$input"
-sed 's/^[[:space:]]*//' <<< "$export"
+input1="$(echo -e "${input}" | sed -e 's/[[:space:]]*$//')"
+export1="$(echo -e "${input}" | sed -e 's/[[:space:]]*$//')"
 
-echo $input
-echo $export
+
+echo $input1
+echo $export1
 
 
 file=0
