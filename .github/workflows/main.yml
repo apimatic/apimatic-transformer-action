@@ -14,8 +14,8 @@ jobs:
         id: raml
         with:
          auth: ${{ secrets.AUTH }}
-         inputURL: ' https://petstore.swagger.io/v2/swagger.json '
-         exportFormat: ' raml '
+         inputURL: 'https://petstore.swagger.io/v2/swagger.json'
+         exportFormat: 'raml'
      # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
         run: echo "${{ steps.raml.outputs.specurl }}"
