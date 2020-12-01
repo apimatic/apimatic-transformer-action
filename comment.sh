@@ -6,6 +6,7 @@ export=$3
 echo $input
 echo $export
 
+auth1="$(echo -e "${user_auth}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 input1="$(echo -e "${input}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 export1="$(echo -e "${export}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 
@@ -28,14 +29,14 @@ if [[ $file -gt 0 ]]
 then
   transformedfile=$(curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
-  -H "$user_auth" \
+  -H "$auth1" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data @transform.json | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 else
   transformedfile=$(curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
-  -H "$user_auth" \
+  -H "$auth1" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data '{
