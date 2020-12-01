@@ -8,9 +8,15 @@ echo $input
 echo $export
 
 #Trimmed Arguments
-trimmed_auth=$("$user_auth" | xargs) 
-trimmed_input=$("$input" | xargs)
-trimmed_auth=$("$export" | xargs)
+trimmed_auth=${user_auth## } 
+trimmed_auth=${user_auth%% }
+
+trimmed_input=${input## } 
+trimmed_input=${input%% }
+
+trimmed_export=${export## } 
+trimmed_export=${export%% }
+
 
 echo $trimmed_auth
 echo $trimmed_input
