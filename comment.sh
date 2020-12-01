@@ -37,12 +37,12 @@ then
 else
   transformedfile=$(curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
-  -H "$user_auth" \
+  -H "$trimmed_auth" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data '{
-  "fileUrl": "'"${input}"'",
-  "exportFormat": "'"${export}"'",
+  "fileUrl": "'"${trimmed_input}"'",
+  "exportFormat": "'"${trimmed_export}"'",
   "codeGenVersion": 1
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
