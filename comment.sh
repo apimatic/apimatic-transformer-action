@@ -26,35 +26,23 @@ else
 fi
 
 
-  transformedfile1=$(curl -X POST \
-  --url 'https://www.apimatic.io/api/transformations' \
-  -H "$trimmed_auth" \
-  -H 'Accept: application/json'\
-  -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
-  --data '{
-  "fileUrl": "'"${trimmed_input}"'",
-  "exportFormat": "'"${trimmed_export}"'",
-  "codeGenVersion": 1
-  }')
-  echo $transformedfile1
-
 if [[ $file -gt 0 ]]
 then
   transformedfile=$(curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
-  -H "$trimmed_auth" \
+  -H "$user_auth" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data @transform.json | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 else
   transformedfile=$(curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
-  -H "$trimmed_auth" \
+  -H "$user_auth" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data '{
-  "fileUrl": "'"${trimmed_input}"'",
-  "exportFormat": "'"${trimmed_export}"'",
+  "fileUrl": "'"${input}"'",
+  "exportFormat": "'"${export}"'",
   "codeGenVersion": 1
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
