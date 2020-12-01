@@ -3,6 +3,10 @@ user_auth=$1
 input=$2
 export=$3
 
+echo $user_auth
+echo $input
+echo $export
+
 #Trimmed Arguments
 trimmed_auth=$(echo "$user_auth" | xargs) 
 trimmed_input=$(echo "$input" | xargs)
