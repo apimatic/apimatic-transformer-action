@@ -46,9 +46,14 @@ else
   }' | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 fi
 
-download_path1="https://www.apimatic.io${transformedfile}"
+if [[ $transformedfile == *"error"* ]]; 
+then
+  echo "You have an error in your authorization token or InputURL/Export Format!"
+else
+  download_path1="https://www.apimatic.io${transformedfile}"
+  echo "::set-output name=specurl::$download_path1"
+fi
 
-echo "::set-output name=specurl::$download_path1"
 
 
 
