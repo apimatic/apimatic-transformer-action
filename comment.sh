@@ -3,24 +3,15 @@ user_auth=$1
 input=$2
 export=$3
 
-echo $user_auth
 echo $input
 echo $export
 
-#Trimmed Arguments
-trimmed_auth=${user_auth## } 
-trimmed_auth=${user_auth%% }
+sed 's/^[[:space:]]*//' <<< "$input"
+sed 's/^[[:space:]]*//' <<< "$export"
 
-trimmed_input=${input## } 
-trimmed_input=${input%% }
+echo $input
+echo $export
 
-trimmed_export=${export## } 
-trimmed_export=${export%% }
-
-
-echo $trimmed_auth
-echo $trimmed_input
-echo $trimmed_export
 
 file=0
 FILE=transform.json
