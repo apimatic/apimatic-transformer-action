@@ -4,9 +4,9 @@ input=$2
 export=$3
 
 #Trimmed Arguments
-trimmed_auth=$(echo user_auth | xargs) 
-trimmed_input=$(echo input | xargs)
-trimmed_auth=$(echo export | xargs)
+trimmed_auth=$(echo "$user_auth" | xargs) 
+trimmed_input=$(echo "$input" | xargs)
+trimmed_auth=$(echo "$export" | xargs)
 
 echo $trimmed_auth
 echo $trimmed_input
