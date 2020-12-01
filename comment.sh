@@ -8,9 +8,9 @@ echo $input
 echo $export
 
 #Trimmed Arguments
-trimmed_auth=$(echo "$user_auth" | xargs) 
-trimmed_input=$(echo "$input" | xargs)
-trimmed_auth=$(echo "$export" | xargs)
+trimmed_auth=$("$user_auth" | xargs) 
+trimmed_input=$("$input" | xargs)
+trimmed_auth=$("$export" | xargs)
 
 echo $trimmed_auth
 echo $trimmed_input
