@@ -15,7 +15,7 @@ jobs:
         with:
          auth: ${{ secrets.AUTH }}
          inputURL: 'swagger.json-APIMATIC.json'
-         exportFormat: ' raml '
+         exportFormat: 'wsdl'
      # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
         run: echo "${{ steps.raml.outputs.specurl }}"
