@@ -43,10 +43,10 @@ fi
 
 download_path2="You have an error in your authorization token or InputURL/Export Format!"
 
-if [[ $transformedfile == *Invalid* ]] 
+if [[ "$transformedfile" == *Invalid ]] 
 then
   echo "You have an error in your authorization token or InputURL/Export Format!"
-  echo "::set-output name=specurl::$download_path1"  
+  echo "::set-output name=specurl::$download_path2"  
 else
   download_path1="https://www.apimatic.io${transformedfile}"
   echo "::set-output name=specurl::$download_path1"
