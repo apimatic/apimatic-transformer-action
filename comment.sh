@@ -19,17 +19,21 @@ else
     file=-1
 fi
 
-curl -LI https://www.apimatic.io/api/transformations -H "$auth1"  -o /dev/null -w '%{http_code}\n' -s \
+
+ transformedfile=$(curl -X POST \
+  --url 'https://www.apimatic.io/api/transformations' \
+  -H "$auth1" \
   -H 'Accept: application/json'\
   -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
   --data '{
   "fileUrl": "'"${input1}"'",
   "exportFormat": "'"${export1}"'",
   "codeGenVersion": 1
-  }' 
- 
-echo $http_code
-
+  }')
+  
+  echo $transformed_file
+  
+  
 
 if [[ $file -gt 0 ]]
 then
