@@ -3,7 +3,7 @@ user_auth=$1
 input=$2
 export=$3
 
-
+#Sanitizing arguments
 auth1="$(echo -e "${user_auth}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 input1="$(echo -e "${input}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 export1="$(echo -e "${export}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
@@ -18,6 +18,17 @@ if [ -f "$FILE" ]; then
 else 
     file=-1
 fi
+
+curl -X POST -LI https://www.apimatic.io/api/transformations -H "$auth1" \
+  -H 'Accept: application/json'\
+  -H 'content-type: application/vnd.apimatic.urlTransformDto.v1+json' \
+  --data '{
+  "fileUrl": "'"${input1}"'",
+  "exportFormat": "'"${export1}"'",
+  "codeGenVersion": 1
+  }' \ 
+  -o /dev/null -w '%{http_code}\n' -s
+echo $http_code
 
 
 if [[ $file -gt 0 ]]
