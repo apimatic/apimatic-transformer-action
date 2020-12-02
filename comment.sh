@@ -21,7 +21,7 @@ fi
 
 
   
-  echo transformedfile1=$(curl -X POST \
+  transformedfile1=$(curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
   -H "$auth1" \
   -H 'Accept: application/json'\
@@ -46,6 +46,7 @@ then
   --data @transform.json | jq '.generatedFile' | sed -e 's/^"//' -e 's/"$//')
 else
   transformedfile=$(curl -X POST \
+  --fail \
   --url 'https://www.apimatic.io/api/transformations' \
   -H "$auth1" \
   -H 'Accept: application/json'\
