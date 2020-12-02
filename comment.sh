@@ -20,7 +20,8 @@ else
 fi
 
 
- transformedfile=$(curl -X POST \
+  
+  echo (curl -X POST \
   --url 'https://www.apimatic.io/api/transformations' \
   -H "$auth1" \
   -H 'Accept: application/json'\
@@ -30,8 +31,6 @@ fi
   "exportFormat": "'"${export1}"'",
   "codeGenVersion": 1
   }')
-  
-  echo $transformed_file
   
   
 
