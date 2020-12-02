@@ -43,7 +43,11 @@ fi
 
 download_path2="You have an error in your authorization token or InputURL/Export Format!"
 
+teststring=literal
 echo $transformedfile
+
+
+if echo $teststring | grep -q $transformedfile ; then echo "found"; else echo "not found"; fi
 
 if [[ ${transfomedfile} == *"literal"* ]]; 
 then
