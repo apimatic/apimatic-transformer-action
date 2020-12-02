@@ -43,7 +43,9 @@ fi
 
 download_path2="You have an error in your authorization token or InputURL/Export Format!"
 
-if [[ "$transformedfile" == *Invalid ]] 
+echo $transformedfile
+
+if [[ ${transfomedfile} == *"literal"* ]]; 
 then
   echo "You have an error in your authorization token or InputURL/Export Format!"
   echo "::set-output name=specurl::$download_path2"  
