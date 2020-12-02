@@ -32,7 +32,7 @@ Basic usage:
       - name: Checkout
         uses: actions/checkout@v2
       - name: APIMATIC Transformer
-        uses: apimatic/apimatic-transformer-action@v0.1
+        uses: apimatic/apimatic-transformer-action@v1.0
         id: transform
         with:
          auth: ${{ secrets.AUTH }}
@@ -61,18 +61,18 @@ jobs:
         uses: actions/checkout@v2
         
       - name: APIMATIC Transformer
-        uses: apimatic/apimatic-transformer-action@v0.1
+        uses: apimatic/apimatic-transformer-action@v1.0
         id: raml
         with:
          auth: ${{ secrets.AUTH }}
          inputURL: 'https://petstore.swagger.io/v2/swagger.json'
-         exportFormat: 'apimatic'
+         exportFormat: 'raml'
      # Use the Transformed API Spec as output from our action (id:raml)
       - name: Get the API Spec URL
         run: echo "${{ steps.raml.outputs.specurl }}"
         
       - name: APIMATIC Transformer
-        uses: apimatic/apimatic-transformer-action@v0.1
+        uses: apimatic/apimatic-transformer-action@v1.0
         id: wsdl
         with:
          auth: ${{ secrets.AUTH }}
